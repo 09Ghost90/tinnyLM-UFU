@@ -1,0 +1,1 @@
+# Escrever uma Compreensão para a quantização dos modelos.
