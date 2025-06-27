@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn as nn
 from model import TinyLM
@@ -14,6 +15,9 @@ dropout = 0.1
 patience = 300
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+# Verificar se o diretorio de pesos existe, se não, criar
+if not os.path.exists("./weight"):
+    os.makedirs("./weight")
 
 # Carregar o dataset
 file_path = 'dataset/input.txt'
@@ -159,7 +163,7 @@ torch.save({
     'dim': 128,
     'num_layers': 2,
     'epoch': epochs,
-    'loss': val_loss
+    'loss': val_loss,
 }, "./weight/tiny_lm_final.pth")
 
 print("Treinamento concluído!")
